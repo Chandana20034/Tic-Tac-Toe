@@ -1,0 +1,238 @@
+:root {
+    --yt-spec-base-background: #0f0f0f;
+    --yt-spec-text-primary: #ffffff;
+    --yt-spec-text-secondary: #aaaaaa;
+    --yt-spec-brand-background-primary: #ff0000;
+    --yt-spec-brand-background-secondary: #cc0000;
+}
+
+body {
+    background: var(--yt-spec-base-background);
+    min-height: 100vh;
+    color: var(--yt-spec-text-primary);
+    font-family: 'Roboto', 'Noto Sans Telugu', sans-serif;
+}
+
+.container {
+    padding-top: 2rem;
+    animation: fadeIn 0.8s ease-out;
+}
+
+h1 {
+    color: var(--yt-spec-text-primary);
+    font-weight: 500;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.score-board {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.player-score {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.player-score h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--yt-spec-text-secondary);
+}
+
+.player-score .score {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--yt-spec-text-primary);
+}
+
+.x-score.active {
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.o-score.active {
+    background: rgba(62, 166, 255, 0.1);
+}
+
+.status h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--yt-spec-text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.game-board {
+    max-width: 450px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cell {
+    aspect-ratio: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 0.5rem;
+    color: var(--yt-spec-text-primary);
+}
+
+.cell:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.02);
+}
+
+.cell.x {
+    color: var(--yt-spec-brand-background-primary);
+}
+
+.cell.o {
+    color: #3ea6ff;
+}
+
+.cell.winning {
+    background: var(--yt-spec-brand-background-primary);
+    color: white;
+    animation: winningAnimation 0.5s ease-in-out;
+}
+
+@keyframes winningAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.game-controls {
+    margin-top: 2rem;
+}
+
+#restartButton, #resetScoreButton {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#restartButton {
+    background: var(--yt-spec-brand-background-primary);
+    color: white;
+    border: none;
+}
+
+#restartButton:hover {
+    background: var(--yt-spec-brand-background-secondary);
+}
+
+#resetScoreButton {
+    background: transparent;
+    border: 1px solid var(--yt-spec-text-secondary);
+    color: var(--yt-spec-text-secondary);
+}
+
+#resetScoreButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--yt-spec-text-primary);
+}
+
+.game-history {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.game-history h3 {
+    color: var(--yt-spec-text-primary);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+#historyList {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#historyList .list-group-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: var(--yt-spec-text-secondary);
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+}
+
+#historyList .list-group-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Add responsive adjustments */
+@media (max-width: 576px) {
+    .cell {
+        font-size: 2.5rem;
+        margin: 0.3rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .status h2 {
+        font-size: 1.2rem;
+    }
+    
+    .player-score h3 {
+        font-size: 1.2rem;
+    }
+    
+    .player-score .score {
+        font-size: 1.5rem;
+    }
+    
+    #restartButton, #resetScoreButton {
+        padding: 0.6rem 1.6rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Add YouTube-like animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Add hover effects similar to YouTube */
+.cell:not(.x):not(.o):hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Add YouTube-like focus styles */
+.cell:focus {
+    outline: 2px solid var(--yt-spec-brand-background-primary);
+    outline-offset: 2px;
+}
+
+/* Add YouTube-like active state */
+.cell:active {
+    transform: scale(0.98);
+} 
